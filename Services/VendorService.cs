@@ -12,7 +12,6 @@ namespace APBD_TEST_TEMPLATE.Services
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-
         public async Task<GetVendorResponse> GetVendorAsync(string code)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -112,13 +111,11 @@ namespace APBD_TEST_TEMPLATE.Services
 
                         await productCommand.ExecuteNonQueryAsync();
                     }
-
                 }
 
                 await transaction.CommitAsync();
                 return true;
             }
-
             catch
             {
                 await transaction.RollbackAsync();
